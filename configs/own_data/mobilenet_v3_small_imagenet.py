@@ -4,4 +4,3 @@ _deprecation_ = dict(
     expected='mobilenet-v3-small_8xb32_in1k.py',
     reference='https://github.com/open-mmlab/mmclassification/pull/508',
 )
-runner = dict(type='EpochBasedRunner', max_epochs=150)
