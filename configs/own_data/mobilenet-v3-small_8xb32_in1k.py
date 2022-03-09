@@ -155,4 +155,4 @@ optimizer = dict(
 optimizer_config = dict(grad_clip=None)
 # learning policy
 lr_config = dict(policy='step', step=2, gamma=0.973, by_epoch=True)
-runner = dict(type='EpochBasedRunner', max_epochs=100)
+runner = dict(type='EpochBasedRunner', max_epochs=150)

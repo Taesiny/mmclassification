@@ -13,4 +13,4 @@ model = dict(
         loss=dict(type='CrossEntropyLoss', loss_weight=1.0),
         init_cfg=dict(
             type='Normal', layer='Linear', mean=0., std=0.01, bias=0.),
-        topk=(1, )))
+        topk=(1, 5)))

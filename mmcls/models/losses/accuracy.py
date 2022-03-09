@@ -112,7 +112,7 @@ def accuracy(pred, target, topk=1, thrs=0.):
     pred = to_tensor(pred)
     target = to_tensor(target)
 
-    res = accuracy_torch(pred, target, topk, thrs)
+    res = accuracy_torch(pred, target, (1, ), thrs)
 
     return res[0] if return_single else res
 
