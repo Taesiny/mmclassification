@@ -11,6 +11,7 @@ from .repvgg import RepVGG
 from .res2net import Res2Net
 from .resnest import ResNeSt
 from .resnet import ResNet, ResNetV1d
+from .resnet_preprocessing import ResNet_Pre
 from .resnet_cifar import ResNet_CIFAR
 from .resnext import ResNeXt
 from .seresnet import SEResNet
@@ -29,5 +30,5 @@ __all__ = [
     'ResNeSt', 'ResNet_CIFAR', 'SEResNet', 'SEResNeXt', 'ShuffleNetV1',
     'ShuffleNetV2', 'MobileNetV2', 'MobileNetV3', 'VisionTransformer',
     'SwinTransformer', 'TNT', 'TIMMBackbone', 'T2T_ViT', 'Res2Net', 'RepVGG',
-    'Conformer', 'MlpMixer', 'DistilledVisionTransformer'
+    'Conformer', 'MlpMixer', 'DistilledVisionTransformer', 'ResNet_Pre'
 ]
