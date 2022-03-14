@@ -27,13 +27,13 @@ data = dict(
         data_prefix='test_classification/211219/train/train',
         classes='test_classification/211219/classes.txt',
         pipeline=train_pipeline),
-    val=dict(
+    test=dict(
         type=dataset_type,
         data_prefix='test_classification/211219/test/test',
         ann_file='test_classification/211219/test.txt',
         classes='test_classification/211219/classes.txt',
         pipeline=test_pipeline),
-    test=dict(
+    val=dict(
         # replace `data/val` with `data/test` for standard test
         type=dataset_type,
         data_prefix='test_classification/211219/valid/valid',
