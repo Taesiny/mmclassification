@@ -9,7 +9,9 @@ from mmcv.utils.parrots_wrapper import _BatchNorm
 
 from ..builder import BACKBONES
 from .base_backbone import BaseBackbone
-
+import torch
+import torchvision.transforms.functional as T
+import numpy as np
 eps = 1.0e-5
 
 
@@ -610,7 +612,7 @@ class ResNet_Pre(BaseBackbone):
                 param.requires_grad = False
 
     def init_weights(self):
-        super(ResNet, self).init_weights()
+        super(ResNet_Pre, self).init_weights()
 
         if (isinstance(self.init_cfg, dict)
                 and self.init_cfg['type'] == 'Pretrained'):
@@ -642,7 +644,7 @@ class ResNet_Pre(BaseBackbone):
         return tuple(outs)
 
     def train(self, mode=True):
-        super(ResNet, self).train(mode)
+        super(ResNet_Pre, self).train(mode)
         self._freeze_stages()
         if mode and self.norm_eval:
             for m in self.modules():
@@ -651,27 +653,12 @@ class ResNet_Pre(BaseBackbone):
                     m.eval()
 
 
-@BACKBONES.register_module()
-class ResNetV1d(ResNet):
-    """ResNetV1d backbone.
-
-    This variant is described in `Bag of Tricks.
-    <https://arxiv.org/pdf/1812.01187.pdf>`_.
-
-    Compared with default ResNet(ResNetV1b), ResNetV1d replaces the 7x7 conv in
-    the input stem with three 3x3 convs. And in the downsampling block, a 2x2
-    avg_pool with stride 2 is added before conv, whose stride is changed to 1.
-    """
-
-    def __init__(self, **kwargs):
-        super(ResNetV1d, self).__init__(
-            deep_stem=True, avg_down=True, **kwargs)
 
 class AutoAug(nn.Module):
     def __init__(self):
         super(AutoAug, self).__init__()
-        self.mean = torch.from_numpy( np.array([123.675, 116.28, 103.53], dtype=np.float32).reshape(1, 1, 3) / 255).cuda()
-        self.std =  torch.from_numpy(np.array([58.395, 57.12, 57.375], dtype=np.float32).reshape(1, 1, 3) / 255).cuda()
+        self.mean = torch.from_numpy( np.array([123.675, 116.28, 103.53], dtype=np.float32).reshape(3, 1, 1) / 255).cuda()
+        self.std =  torch.from_numpy(np.array([58.395, 57.12, 57.375], dtype=np.float32).reshape(3, 1, 1) / 255).cuda()
         
         self.a1 = torch.nn.Parameter(torch.rand(()))
         self.a2 = torch.nn.Parameter(torch.rand(()))
