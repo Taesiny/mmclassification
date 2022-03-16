@@ -40,4 +40,4 @@ data = dict(
         ann_file='test_classification/220315/valid.txt',
         classes='test_classification/220315/classes.txt',
         pipeline=test_pipeline))
-evaluation = dict(interval=20, metric='accuracy', metric_options={'topk': (1, )}, save_best='accuracy_top-1')
+evaluation = dict(interval=10, metric='accuracy', metric_options={'topk': (1, )}, save_best='accuracy_top-1')
