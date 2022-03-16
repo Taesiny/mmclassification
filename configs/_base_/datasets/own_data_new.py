@@ -24,20 +24,20 @@ data = dict(
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        data_prefix='test_classification/220315/train',
+        data_prefix='test_classification/220315/train/train',
         classes='test_classification/220315/classes.txt',
         pipeline=train_pipeline),
     test=dict(
         type=dataset_type,
-        data_prefix='test_classification/220315/test',
+        data_prefix='test_classification/220315/test/test',
         ann_file='test_classification/220315/test.txt',
         classes='test_classification/220315/classes.txt',
         pipeline=test_pipeline),
     val=dict(
         # replace `data/val` with `data/test` for standard test
         type=dataset_type,
-        data_prefix='test_classification/220315/valid',
+        data_prefix='test_classification/220315/valid/valid',
         ann_file='test_classification/220315/valid.txt',
         classes='test_classification/220315/classes.txt',
         pipeline=test_pipeline))
-evaluation = dict(interval=10, metric='accuracy', metric_options={'topk': (1, )}, save_best='accuracy_top-1')
+evaluation = dict(interval=20, metric='accuracy', metric_options={'topk': (1, )}, save_best='accuracy_top-1')
